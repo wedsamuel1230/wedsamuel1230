@@ -14,8 +14,8 @@ I'm a student who loves building hardware-meets-software projects. I write Ardui
 ## 🛠️ Tech Stack
 
 - **Languages:** Arduino C/C++, C/C++, Python
-- **Boards & MCUs:** ESP32, Raspberry Pi Pico / Pico W
-- **Platforms/Tools:** Arduino IDE, Git, VS Code
+- **Boards & MCUs:** Arduino UNO, ESP32, Raspberry Pi Pico / Pico W
+- **Platforms/Tools:** Arduino IDE, Git, VS Code, Fusion 360
 - **Hardware & Electronics:** Breadboarding, wiring/prototyping, sensors & actuators
 
 ---
