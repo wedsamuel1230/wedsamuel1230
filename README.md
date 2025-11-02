@@ -8,6 +8,7 @@ I'm a student who loves building hardware-meets-software projects. I write Ardui
 
 - [**CTEA-BottleSumo**](https://github.com/wedsamuel1230/CTEA-BottleSumo): Robotics, automation, and engineering challenges—fun with bottle sumo robots!
 - [**md-vs-latex-test**](https://github.com/wedsamuel1230/md-vs-latex-test): Comparing Markdown and LaTeX for scientific and technical documentation.
+- [**feeding-llm-pdf-test**](https://github.com/wedsamuel1230/feeding-llm-pdf-test): Test project for evaluating RAG pipelines with Tkinter GUI, exploring PDF Q&A, semantic search, 21 LLM model integration, and hybrid general knowledge mode.
 
 ---
 
