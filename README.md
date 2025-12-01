@@ -6,7 +6,7 @@ I'm a student who loves building hardware-meets-software projects. I write Ardui
 
 ## 🚀 Featured Repositories
 
-- [**github-education-guide""](https://github.com/wedsamuel1230/github-education-guide?tab=readme-ov-file#%E5%B0%88%E6%A1%88%E7%B0%A1%E4%BB%8B) A comprehensive guide to teach you how to apply github educational license.
+- [**github-education-guide**](https://github.com/wedsamuel1230/github-education-guide?tab=readme-ov-file#%E5%B0%88%E6%A1%88%E7%B0%A1%E4%BB%8B) A comprehensive guide to teach you how to apply github educational license.
 - [**md-vs-latex-test**](https://github.com/wedsamuel1230/md-vs-latex-test): Comparing Markdown and LaTeX for scientific and technical documentation.
 - [**feeding-llm-pdf-test**](https://github.com/wedsamuel1230/feeding-llm-pdf-test): Test project for evaluating RAG pipelines with Tkinter GUI, exploring PDF Q&A, semantic search, 21 LLM model integration, and hybrid general knowledge mode.
 
