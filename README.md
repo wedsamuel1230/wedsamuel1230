@@ -16,8 +16,8 @@ I'm a student who loves building hardware-meets-software projects. I write Ardui
 - [**SFT**](https://github.com/wedsamuel1230/SFT): Android application built with Kotlin for mobile development.
 
 ### 📚 Learning & Documentation
-- [**github-education-guide**](https://github.com/wedsamuel1230/github-education-guide): Comprehensive guide for applying to GitHub Education licenses.
-- [**feeding-llm-pdf-test**](https://github.com/wedsamuel1230/feeding-llm-pdf-test): RAG pipeline evaluation with Tkinter GUI, exploring PDF Q&A, semantic search, and 21 LLM model integration.
+- [**github-education-guide**](https://github.com/wedsamuel1230/github-education-guide): Comprehensive guide for applying for GitHub Education licenses.
+- [**feeding-llm-pdf-test**](https://github.com/wedsamuel1230/feeding-llm-pdf-test): RAG pipeline evaluation with Tkinter GUI, exploring PDF Q&A, semantic search, and integration of 21 different LLM models.
 - [**md-vs-latex-test**](https://github.com/wedsamuel1230/md-vs-latex-test): Comparing Markdown and LaTeX for scientific and technical documentation.
 
 ---
