@@ -1,6 +1,6 @@
 # 👋 Hi there, I'm Samuel!
 
-I'm a student who loves building hardware-meets-software projects. I write Arduino C/C++ and enjoy wiring and prototyping electronics—especially anything with sensors, motors, and microcontrollers.
+### I'm a student who loves building hardware-meets-software projects. 
 ---
 ## 🌱 About Me
 
