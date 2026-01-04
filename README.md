@@ -1,6 +1,6 @@
 # 👋 Hi there, I'm Samuel!
 
-### I'm a student who loves building hardware-meets-software projects. 
+> I'm a student who loves building hardware-meets-software projects. 
 ---
 ## 🌱 About Me
 
