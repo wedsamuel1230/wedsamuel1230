@@ -1,0 +1,135 @@
+name: Update profile activity
+
+on:
+  schedule:
+    - cron: "17 2 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Refresh README activity snapshot
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const now = new Date();
+            const year = now.getUTCFullYear();
+            const yearText = String(year);
+            const from = `${yearText}-01-01T00:00:00Z`;
+            const to = now.toISOString();
+            const monthNames = [
+              'January', 'February', 'March', 'April', 'May', 'June',
+              'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+
+            const query = `
+              query($login: String!, $from: DateTime!, $to: DateTime!) {
+                user(login: $login) {
+                  contributionsCollection(from: $from, to: $to) {
+                    commitContributionsByRepository(maxRepositories: 100) {
+                      contributions(first: 100) {
+                        nodes {
+                          occurredAt
+                          commitCount
+                          isRestricted
+                        }
+                      }
+                    }
+                  }
+                  repositories(
+                    first: 100
+                    ownerAffiliations: OWNER
+                    isFork: false
+                    orderBy: {field: CREATED_AT, direction: ASC}
+                  ) {
+                    nodes {
+                      createdAt
+                      isPrivate
+                    }
+                  }
+                }
+              }
+            `;
+
+            const result = await github.graphql(query, {
+              login: 'wedsamuel1230',
+              from,
+              to
+            });
+            const user = result.user;
+            const commitsByMonth = Object.fromEntries(
+              monthNames.map((_, index) => [
+                `${yearText}-${String(index + 1).padStart(2, '0')}`,
+                0
+              ])
+            );
+
+            for (const repository of user.contributionsCollection.commitContributionsByRepository) {
+              for (const contribution of repository.contributions.nodes) {
+                if (contribution.isRestricted) continue;
+                const month = contribution.occurredAt.slice(0, 7);
+                if (month in commitsByMonth) {
+                  commitsByMonth[month] += contribution.commitCount;
+                }
+              }
+            }
+
+            const started = user.repositories.nodes.filter((repository) => (
+              repository.isPrivate === false &&
+              repository.createdAt.startsWith(yearText)
+            )).length;
+            const totalCommits = Object.values(commitsByMonth)
+              .reduce((total, count) => total + count, 0);
+            const currentMonth = now.getUTCMonth();
+            const rows = monthNames
+              .slice(0, currentMonth + 1)
+              .map((month, index) => {
+                const key = `${yearText}-${String(index + 1).padStart(2, '0')}`;
+                return `| ${month} | ${commitsByMonth[key]} |`;
+              })
+              .join('\n');
+            const formattedDate = new Intl.DateTimeFormat('en-GB', {
+              day: '2-digit',
+              month: 'long',
+              year: 'numeric',
+              timeZone: 'UTC'
+            }).format(now);
+            const block = `<!-- PROFILE-STATS:START -->
+            ### ${yearText} public repository snapshot
+
+            As of **${formattedDate}**, I had started **${started} public, non-fork repositories** in ${yearText}. I recorded **${totalCommits} public commits** so far, with this monthly breakdown:
+
+            | Month | Commits |
+            | --- | ---: |
+            ${rows}
+
+            The contribution calendar and repository badge above are live views. This dated snapshot is refreshed automatically by GitHub Actions.
+            <!-- PROFILE-STATS:END -->`.replace(/^ {12}/gm, '');
+
+            const readmePath = 'README.md';
+            const readme = fs.readFileSync(readmePath, 'utf8');
+            const marker = /<!-- PROFILE-STATS:START -->[\s\S]*?<!-- PROFILE-STATS:END -->/;
+            if (!marker.test(readme)) {
+              core.setFailed('README.md is missing the profile statistics markers.');
+              return;
+            }
+            fs.writeFileSync(readmePath, readme.replace(marker, block), 'utf8');
+
+      - name: Commit refreshed snapshot
+        run: |
+          if git diff --quiet -- README.md; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: refresh profile activity"
+          git push

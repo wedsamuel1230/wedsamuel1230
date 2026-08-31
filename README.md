@@ -6,6 +6,16 @@ I work across hardware and software—from Arduino, ESP32, and Raspberry Pi Pico
 
 [About Me](#about-me) · [Learning](#what-im-currently-learning) · [Skills](#technical-skills) · [Projects](#featured-projects) · [Interests](#areas-of-interest)
 
+## GitHub Activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wedsamuel1230&theme=github_dark">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wedsamuel1230&theme=default">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wedsamuel1230&theme=default" alt="GitHub profile contribution summary">
+</picture>
+
+![GitHub contribution activity calendar](https://ghchart.rshah.org/2ea44f/wedsamuel1230)
+
 ## About Me
 
 - I enjoy connecting sensors, devices, applications, and automation into one understandable system.
